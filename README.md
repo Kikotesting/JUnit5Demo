@@ -20,7 +20,7 @@
 
 1. Lifecycle methods - BeforeAll-Each, AfterAll-Each
 2. Parameterized tests - (name = “Run {index} - value: {arguments}”)
-### ValueSource
+## ValueSource
 ```
     @ValueSource(ints = {1,5,6})
     void intValues(int theParam){
@@ -32,7 +32,7 @@
         System.out.println("theParam = " + theParam);
     }
  ```
- ### CsvSource
+ ## CsvSource
  ```
     @ParameterizedTest
     @CsvSource(value = {"steve,rogers", "captain,marvel", "bucky, barners"})
@@ -57,7 +57,7 @@
         System.out.println("param1 = " + param1 + ", param2 = " + param2);
     }
 ```
-### CsvFileSource
+## CsvFileSource
 ```
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/params/shoppinglist.csv", numLinesToSkip = 1)
@@ -65,7 +65,7 @@
         System.out.println("name = " + name + ", price = " + price + ", qty = " + qty + ", uom = " + uom + ", provider = " + provider);
     }
 ```
-### MethodSource
+## MethodSource
 
 - In order for a method to be eligible to be the provider of values for the parameter of another test method, it needs to return a type Stream or anything that can be converted to a Stream, for example, Collections.
 - If they are in a different class, they will need to be `static`
@@ -104,9 +104,30 @@
           System.out.println("param1 = " + param1 + ", param2 = " + param2);
       }
 ```
-### Test Run Order
+## Test Run Order
 1. ClassName⇒ methods name
 2. DisplayName - alphabetical order
 3. OrderName 
     We will need to add an additional annotation - namely, the `@Order`.
-    And then, between the `()`, we need to specify an `int` value, so I will specify the value `1`.
+    And then, between the `()`, we need to specify an `int` value, so I will specify the value '1'
+    
+## Assumption
+Here, we can use JUnit 5's assumption features, which will allow us to skip either an entire test or parts of the test based on the conditions that we will provide to the so-called Assumptions.
+### **Assumptions.assumeTrue**
+The most basic one takes a condition which evaluates to boolean, and then we also have the option to provide a message that will be shown at the console when the test will be skipped.
+
+###assumeTrue
+ means that if the condition provided to the assumption evaluates to true, only then will the test run. If the condition does not evaluate to true, the test will be skipped.
+**Assumptions Require A Condition**
+The important thing to remember here is that within the assumption, we need to provide a condition to be evaluated, no matter what that condition is, and that it needs to evaluate to a boolean value.
+
+###assumeThat
+Taking a look at the parameters that I have available, I want to create an assumption where I will take a look at the value for `param2`.
+I will say that only when `param2 > 20`, I want to do a `System.out` to the console to say that "This code ran."
+So I want to signal that the code inside the assumption ran.
+In this case, when we're using `assuming that`, and we are specifying the code to be executed inside the assumption, the rest of the test will run no matter what the result of evaluating this condition from within the assumption will be.
+
+###assumeFalse
+Here I will do an assumption, and I will say `assumeFalse` - so let's try a different type of assumption her - and I will say `assumeFalse(param1.equals("steve"))` , and if this assumption will fail, we want the following message to be printed to the console - namely, "The assumption failed for the following param2."
+
+
