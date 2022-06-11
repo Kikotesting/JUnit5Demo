@@ -116,18 +116,18 @@ Here, we can use JUnit 5's assumption features, which will allow us to skip eith
 ### **Assumptions.assumeTrue**
 The most basic one takes a condition which evaluates to boolean, and then we also have the option to provide a message that will be shown at the console when the test will be skipped.
 
-###assumeTrue
+### assumeTrue
  means that if the condition provided to the assumption evaluates to true, only then will the test run. If the condition does not evaluate to true, the test will be skipped.
 **Assumptions Require A Condition**
 The important thing to remember here is that within the assumption, we need to provide a condition to be evaluated, no matter what that condition is, and that it needs to evaluate to a boolean value.
 
-###assumeThat
+### assumeThat
 Taking a look at the parameters that I have available, I want to create an assumption where I will take a look at the value for `param2`.
 I will say that only when `param2 > 20`, I want to do a `System.out` to the console to say that "This code ran."
 So I want to signal that the code inside the assumption ran.
 In this case, when we're using `assuming that`, and we are specifying the code to be executed inside the assumption, the rest of the test will run no matter what the result of evaluating this condition from within the assumption will be.
 
-###assumeFalse
+### assumeFalse
 Here I will do an assumption, and I will say `assumeFalse` - so let's try a different type of assumption her - and I will say `assumeFalse(param1.equals("steve"))` , and if this assumption will fail, we want the following message to be printed to the console - namely, "The assumption failed for the following param2."
 
 
