@@ -6,12 +6,13 @@
 5. Clean the folder below java in test and main
 6. Go to maven options locates right on the panel
 7. Select clean and install and run the project
-8. Go to pom.xml and find the `<artifactId>maven-compiler-plugin</artifactId>`
+8. Go to pom.xml and find the "<artifactId>maven-compiler-plugin</artifactId>"
 9. Add this configurator options below version tag
-`<configuration>
+```<configuration>
   <source>8</source>
   <target>8</target>
-</configuration>`
+</configuration>
+```
 10.Go to maven options and re-run the project
 
 # Tests
