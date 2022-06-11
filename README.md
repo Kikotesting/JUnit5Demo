@@ -37,14 +37,14 @@
 ## Assumption
 Here, we can use JUnit 5's assumption features, which will allow us to skip either an entire test or parts of the test based on the conditions that we will provide to the so-called Assumptions.
 
-1.assumeTrue
+1. assumeTrue
  means that if the condition provided to the assumption evaluates to true, only then will the test run. If the condition does not evaluate to true, the test will be skipped.
 **Assumptions Require A Condition**
 The important thing to remember here is that within the assumption, we need to provide a condition to be evaluated, no matter what that condition is, and that it needs to evaluate to a boolean value.
-2.assumeThat
+2. assumeThat
 Taking a look at the parameters that I have available
 In this case, when we're using `assuming that`, and we are specifying the code to be executed inside the assumption, the rest of the test will run no matter what the result of evaluating this condition from within the assumption will be.
-3.assumeFalse
+3. assumeFalse
 Here I will do an assumption, and I will say `assumeFalse` - so let's try a different type of assumption her - and I will say `assumeFalse(param1.equals("steve"))` , and if this assumption will fail, we want the following message to be printed to the console - namely, "The assumption failed for the following param2."
 
 ## Disabled test
